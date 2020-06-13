@@ -18,17 +18,27 @@ class _CategoryPageState extends State<CategoryPage> {
           elevation: 0.0,
           child: ListTile(
             onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => AddQuiz(
-                    categoryModel: categories[index],
-                  )));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => AddQuiz(
+                        categoryModel: categories[index],
+                      )));
             },
             title: Text(
               categories[index].name,
-              style: Theme.of(context).textTheme.title,
+              style: Theme.of(context).textTheme.title.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
             trailing: CircleAvatar(
-              child: Text("${categories[index].quizList.length}"),
+              maxRadius: 15,
+              backgroundColor: Colors.red,
+              child: Text(
+                "${categories[index].quizList.length}",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         ),
